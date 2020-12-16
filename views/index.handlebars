@@ -1,0 +1,39 @@
+<h1>Get Your Burgs Here!</h1>
+
+<h2>Burgs that are fresh!</h2>
+
+<ul>
+  {{#each burg}}
+    {{#unless ate}}
+      {{!-- <button data-id ={{id}} --}}
+      {{> burger/burg-block ate=true}}
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Burgs that you ate!</h2>
+
+<ul>
+  {{#each burg}}
+    {{#if ate}}
+      {{> burger/burg-block ate=false}}
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Burg</h2>
+<form class="create-form">
+
+  <div class="form-group">
+    <label for="ca">Burga Name:</label>
+    <input type="text" id="ca" name="name">
+  </div>
+
+  <div class="form-group">
+    <label for="slee">Ate?</label><br>
+    <input type="radio" name="ate" value="1" checked> Ate!<br>
+    <input type="radio" name="ate" value="0"> Fresh
+  </div>
+
+  <button type="submit">Add Burga</button>
+</form>
