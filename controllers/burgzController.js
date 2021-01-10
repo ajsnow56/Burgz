@@ -17,7 +17,7 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgz", function (req, res) {
-  burga.create(["name", "ate"], [req.body.name, req.body.ate], function (
+  burga.create(["name"], [req.body.name], function (
     result
   ) {
     // Send back the ID of the new quote
