@@ -9,7 +9,7 @@ var burga = require("../models/burg.js");
 router.get("/", function (req, res) {
   burga.all(function (data) {
     var hbsObject = {
-      burg: data,
+      burg: data
     };
     console.log(hbsObject);
     res.render("index", hbsObject);
@@ -17,7 +17,8 @@ router.get("/", function (req, res) {
 });
 
 router.post("/api/burgz", function (req, res) {
-  burga.create(["name"], [req.body.name], function (
+  burga.create(["name", "ate"], 
+  [req.body.name, req.body.ate], function (
     result
   ) {
     // Send back the ID of the new quote
@@ -31,10 +32,8 @@ router.put("/api/burgz/:id", function (req, res) {
 
   console.log("condition", condition);
 
-  burga.update(
-    {
-      ate: req.body.ate,
-    },
+  burga.update({
+      ate: req.body.ate},
     condition,
     function (result) {
       if (result.changedRows == 0) {
@@ -48,11 +47,11 @@ router.put("/api/burgz/:id", function (req, res) {
 });
 
 router.delete("/api/burgz/:id", function (req, res) {
-  burga.delete({ id: req.params.id }, function (err, data) {
-    if (err) {
-      res.status(500).end();
-    } else if (data.affectedRows == 0) {
-      res.status(404).end();
+  var condition = "id = " + req.params.id;
+  burga.delete(condition, function (result) {
+    if (result.affectedRows == 0) {
+      // If no rows were changed, then the ID must not exist, so 404
+      return res.status(404).end();
     } else {
       res.status(200).end();
     }
