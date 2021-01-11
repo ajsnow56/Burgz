@@ -88,10 +88,23 @@ var orm = {
       cb(result);
     });
   },
-  delete(table, condition, cb) {
-    const query = "DELETE FROM ?? WHERE ?";
-    connection.query(query, [table, condition], cb);
-  },
+  delete: function(table, condition, cb) {
+    var queryString = "DELETE FROM " + table;
+    queryString += " WHERE ";
+    queryString += condition;
+
+    connection.query(queryString, function(err, result) {
+      if (err) {
+        throw err;
+      }
+
+      cb(result);
+    });
+  }
+  // delete(table, condition, cb) {
+  //   const query = "DELETE FROM ?? WHERE ?";
+  //   connection.query(query, [table, condition], cb);
+  // },
 };
 
 // Export the orm object for the model (cat.js).

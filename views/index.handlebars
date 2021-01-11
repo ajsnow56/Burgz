@@ -10,7 +10,7 @@
 <ul class="red">
   {{#each burg}}
     {{#unless ate}}
-      {{> burger/burg-block ate=true}}
+      {{> burger/burg-block eaten=true}}
     {{/unless}}
   {{/each}}
 </ul>
@@ -25,9 +25,15 @@
   <div class="form-group">
     <label for="ca"><h3>Burga Name:</h3></label>
     <input type="text" id="ca" name="name">
-  <button type="submit">Add Burga</button>
   </div>
+  <div class="form-group">
+    <label for="ate">Eat it now?</label><br>
+    <input type="radio" name="ate" value="1" checked> Nom<br>
+    <input type="radio" name="ate" value="0"> Make it Fresh
+  </div>
+  <button type="submit">Add Burga</button>
 </div>
+</form>
 
 <div class= "col-4">
 <h2 class="blue">Burgs that you ate!</h2>
@@ -35,10 +41,9 @@
 <ul class="blue">
   {{#each burg}}
     {{#if ate}}
-      {{> burger/burg-block ate=false}}
+      {{> burger/burg-block eaten=false}}
     {{/if}}
   {{/each}}
 </ul>
 </div>
 </div>
-</form>

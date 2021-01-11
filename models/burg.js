@@ -18,8 +18,10 @@ var burga = {
       cb(res);
     });
   },
-  delete(condition, cb) {
-    orm.delete("burgz", condition, cb);
+  delete: function(condition, cb) {
+    orm.delete("burgz", condition, function(res) {
+      cb(res);
+    });
   },
 };
 
