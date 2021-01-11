@@ -1,11 +1,14 @@
+
 li {
   padding: 5px;
   margin: 5px;
-  background: #faebd7;
+  background: #f8f8db;
+  opacity: 70%;
 }
 
 .label {
   font-weight: bold;
+  font-size: 20px;
 }
 
 .create-update-form {
@@ -16,4 +19,16 @@ li {
 
 .form-group {
   margin-bottom: 5px;
+}
+
+body { 
+background-image: url("https://cdn.vox-cdn.com/thumbor/h78SPDZw7trqejyslI0gy_dKYTg=/0x0:1438x783/1400x1050/filters:focal(604x277:834x507):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/53965573/carlsjr.0.jpeg");
+background-size: 100%;
+
+}
+.red {
+color: red;
+}
+.blue {
+  color: blue;
 }
